@@ -1,0 +1,23 @@
+bcrypt.hash()
+Hash passwords during registration
+bcrypt.compare()
+Verify passwords during login
+jwt.sign()
+Generate a signed authentication token
+Validation middleware
+Reject invalid registration requests
+
+
+This establishes the relationship between a task and a user.
+userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true
+}
+
+
+Let's recap what your app can do now:
+- Request interceptor: Automatically attaches the JWT token to API requests.
+- Response interceptor: Detects 401 Unauthorized responses, removes the token, and redirects to login.
+- Protected route: Prevents users without a token from accessing the Dashboard.
+- Logout: Removes the token and redirects to login.
